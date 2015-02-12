@@ -1,1 +1,2 @@
 # Instant-Messenger
+Hello friends!
