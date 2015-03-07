@@ -31,6 +31,26 @@ session_start();
 		$_SESSION["userName"] = "GUEST";
 		}
 		?>
+		<script>
+			function checkRegistration() 
+			{
+				 var pas1 = document.getElementById("pass1").value;
+				 var pas2 = document.getElementById("pass2").value;
+				 var flag = true;
+				 if ((pas1!=pas2)){
+					 document.getElementById('passError').innerHTML="*Passwords do not match.";
+					 flag= false;
+				 }
+				var z = document.getElementById("email").value;
+				var atpos = z.indexOf("@"); 
+				var dotpos = z.lastIndexOf("."); 
+				if (atpos< 1 || dotpos<atpos+2 || dotpos+2>=z.length) {
+					document.getElementById('emailError').innerHTML="*Email is invalid.";
+					flag= false;
+				}
+				return flag;
+			}
+		</script>
 		
 	</head>
 	
@@ -49,25 +69,26 @@ session_start();
 		
      
 		<p> If you already have an account please use the following form to login: <br> </p>
-		<form id="login method="get">
+		<form id="login" name="login" method="get">
 		USERNAME:  
-		<input type="text" name ="usernameL">  <br>
+		<input type="text" name ="usernameL" required>  <br>
 		PASSWORD:  
-		<input type="password" name="passUNSECL"> <br> <br>
+		<input type="password" name="passUNSECL" required> <br> <br>
 		<input type="submit" value="SUBMIT" >
 		</form>
 		<br><hr><br>
 		
 		<p> If you do not have an account please register here:
-		<form id="register" method="post" >
+		<form name="register" id="register" method="post" onsubmit="return checkRegistration()">
 		USERNAME: 
 		<input type="text" name="usernameR" required> <br>
 		EMAIL:
-		<input type="text" name="emailR" required><br>
+		<input type="text" name="email" id="email" required><div id="emailError"></div>
 		PASSWORD:
-		<input type="password" name="pass1" required> <br>
+		<input type="password" name="pass1" id="pass1" required> <br>
 		CONFIRM PASSWORD:
-		<input type="password" name="pass2" required> <br> <br>
+		<input type="password" name="pass2" id="pass2" required>
+		<div id="passError"></div><br>
 		<input type="submit" value="SUBMIT">
 		</form>
 		<br> <hr>
