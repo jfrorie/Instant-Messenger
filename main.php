@@ -30,9 +30,10 @@ session_start();
 	</header>
 	
 	<nav>
-		<a href="main.php">HOME</a> 
-		<a href="settings.php">SETTINGS</a> 
-		<a href="account.php">REGISTER/LOGIN</a>
+		<a href="main.php">HOME</a>
+		<a href="settings.php">SETTINGS</a>
+		<a href="account.php">LOGIN</a>
+		<a href="register.php">REGISTER</a>
 		<a href="logout.php">LOGOUT</a>
 	</nav>
 	
