@@ -12,6 +12,7 @@ session_start();
 		while (!feof($file)) {
 			$line = fgets($file);
 			$arr = explode('-', $line);
+			$arr[1] = trim($arr[1]);
 			if($arr[0] == $_SESSION['userName'] && $arr[1] == $oldpass) {
 					$flag = true;
 			}
@@ -52,7 +53,7 @@ session_start();
 		foreach($newFile as $line) {	
 			if (!strstr($line, "$userName-$oldpass" )) fwrite($file, $line);
 		}
-		fwrite($file, "\r$userName-$password1");
+		fwrite($file, "\r\n$userName-$password1");
 		fclose($file);
 		return $i;
 	}
@@ -100,6 +101,7 @@ session_start();
 		<a href="account.php">LOGIN</a>
 		<a href="register.php">REGISTER</a>
 		<a href="logout.php">LOGOUT</a>
+		<a href="messages.php">MESSAGES</a>
 	</nav>
 	
 	<body>
@@ -107,7 +109,7 @@ session_start();
 		<?php
 			if ($_SESSION["userName"] == "GUEST")
 			{
-				echo "You must be logged in to use this functionality";
+				echo "You must be logged in to use this functionality.";
 			}
 			else{ ?>
 			
