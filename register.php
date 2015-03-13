@@ -11,6 +11,7 @@ session_start();
 			$errorMessage= "*Passwords do not match.";
 				return $errorMessage;
 		}
+		
 		$file = fopen("users.txt","a+");
 	    rewind($file);
 		while (!feof($file)) {
@@ -82,7 +83,6 @@ session_start();
 		<input type="password" name="pass1" id="pass1" required> <br>
 		CONFIRM PASSWORD:
 		<input type="password" name="pass2" id="pass2" required>
-		<div id="passError"></div><br>
 		<input type="submit" value="SUBMIT" name="registerButton">
 		</form>
 		<br> <hr>
