@@ -95,7 +95,7 @@ function sendMessage($username,$message){
 				echo "Send a Message<br><br>";
 		?>
 		<form id="sendMessage" name="sendMessage" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-		USERNAME:  
+		RECIPIENT:  
 		<input type="text" name ="username" required>  <br>
 		MESSAGE:  
 		<input type="message" name="message" required> <br> <br>
