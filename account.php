@@ -10,7 +10,7 @@ function login($username,$password){
 	while (!feof($file)) {
 			$line = fgets($file);
 			$arr = explode('-', $line);
-			if($arr[0] == $username && $arr[0] =  $password) {
+			if($arr[0] == $username && $arr[0] ==  $password) {
 					$_SESSION['userName'] = $username;
 					$errorMessage = "";
 			}
