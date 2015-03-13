@@ -2,6 +2,48 @@
 // Start the session
 session_start();
 ?>
+<?php
+function sendMessage($username,$message){
+	$errorMessage = "Invalid username";
+	if($username == "GUEST"){
+		$errorMessage = "GUEST cannot receive messages.";
+		return $errorMessage;
+	}
+	$file = fopen("users.txt","r");
+	   
+		while (!feof($file)) {
+			$line = fgets($file);
+			$arr = explode('-', $line);
+			if($arr[0] == $username) {
+				$errorMessage = "";
+				break;
+			}
+		}
+	fclose($flile);
+	
+	if($errorMessage == ""){
+		$sender = $_SESSION["userName"];
+		$file2 = fopen("$username-Messages.txt", "a+");
+		fwrite($file2, "\r\n$sender:$message");
+		
+		fclose($file2);
+	}
+		
+	return $errorMessage;
+}
+?>
+
+<?php
+
+	if (isset($_POST['MessageButton'])){
+		
+		$username  = $_POST['username'];
+		$message = $_POST['message'];
+		
+        $error = sendMessage($username, $message);
+	}	
+	
+?>
 <html>
 	<head>
 		<title> Group 10's Instant Messenger </title>
@@ -35,13 +77,48 @@ session_start();
 		<a href="account.php">LOGIN</a>
 		<a href="register.php">REGISTER</a>
 		<a href="logout.php">LOGOUT</a>
+		<a href="messages.php">MESSAGES</a>
 	</nav>
 	
 	<body>
 		<?php
-			echo "Welcome to A Highly Ungeneric Instant Messaging Service: ". $_SESSION["userName"] .".<br>"
+			echo "Welcome to A Highly Ungeneric Instant Messaging Service: ". $_SESSION["userName"] .".<br><br>";
+			
 		?>
-		This page will contain the primary functionality of this project, but for now is empty because I am not working on that bit.
+		
+		<?php
+			if ($_SESSION["userName"] == "GUEST")
+			{
+				echo "You must be logged in to use this functionality.";
+			}
+			else{ 
+				echo "Send a Message<br><br>";
+		?>
+		<form id="sendMessage" name="sendMessage" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+		USERNAME:  
+		<input type="text" name ="username" required>  <br>
+		MESSAGE:  
+		<input type="message" name="message" required> <br> <br>
+		<input type="submit" value="SUBMIT" name="MessageButton" >
+		</form>
+		
+
+		
+	<?php 
+  
+    if (isset($_POST['MessageButton'])){
+
+		if ($error == "") {
+			echo "Message successfully sent.<br><br>";
+		}
+		else 
+			echo $error, "<br><br>";           
+    }
+	?>
+	
+	<?php
+	}
+	?>
 	</body>
 	
 </html>
