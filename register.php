@@ -70,6 +70,7 @@ session_start();
 		<a href="account.php">LOGIN</a>
 		<a href="register.php">REGISTER</a>
 		<a href="logout.php">LOGOUT</a>
+		<a href="messages.php">MESSAGES</a>
 	</nav>
 	
 	<body>
