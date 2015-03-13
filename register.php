@@ -107,7 +107,6 @@ session_start();
 		{
 		$_SESSION["userName"] = "GUEST";
 		}
-		echo "Username is " . $_SESSION["userName"] .".<br>";
 		?>
 		
 	</body>
