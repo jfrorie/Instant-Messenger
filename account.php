@@ -10,12 +10,15 @@ function login($username,$password){
 	while (!feof($file)) {
 			$line = fgets($file);
 			$arr = explode('-', $line);
-			if($arr[0] == $username && $arr[1] == $password) {
+			$arr[1] = trim($arr[1]);
+			
+			if($arr[0] == $username && $arr[1] == $password ) {
 					$_SESSION['userName'] = $username;
 					$errorMessage = "";
 			}
 	}
 	
+	fclose($flile);
 	return $errorMessage;
 
 	
@@ -60,6 +63,7 @@ function login($username,$password){
 		<a href="account.php">LOGIN</a>
 		<a href="register.php">REGISTER</a>
 		<a href="logout.php">LOGOUT</a>
+		<a href="messages.php">MESSAGES</a>
 	</nav>
 	
 	<body>
