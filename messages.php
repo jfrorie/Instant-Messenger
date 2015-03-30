@@ -40,6 +40,13 @@ function viewMessages($username){
 			
 		}
 		</style>
+		<?php
+		if (!isset($_SESSION["userName"]))
+		{
+		$_SESSION["userName"] = "GUEST";
+		}
+		?>
+		
 		</head>
 		<header>
 		<h1>A Highly Ungeneric Instant Messaging Service</h1>

@@ -58,6 +58,12 @@ session_start();
 		.error {color: #FF0000;}
 		</style>
 		
+		<?php
+		if (!isset($_SESSION["userName"]))
+		{
+		$_SESSION["userName"] = "GUEST";
+		}
+		?>
 	</head>
 	
 	<header>
