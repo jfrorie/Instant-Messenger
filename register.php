@@ -1,6 +1,7 @@
 <?php
 // Start the session
 session_start();
+include 'connect.php';
 ?>
 <?php
 	function register($username,$password1,$password2){ 
@@ -12,26 +13,18 @@ session_start();
 				return $errorMessage;
 		}
 		
-		$file = fopen("users.txt","a+");
-	    rewind($file);
-		while (!feof($file)) {
-			$line = fgets($file);
-			$arr = explode('-', $line);
-			if($arr[0] == $username) {
-				$errorMessage = "*Username taken.";
-				break;
-			}
-		}
-				  
-	    if($errorMessage == ''){
-			$file = fopen("users.txt","a+");
-					
-			fwrite($file, "\r\n$username-$password1");
-					
-			 }
-			fclose($flile);
-			return $errorMessage;
-			}
+		$sql = "INSERT INTO users(user_name, user_pass)
+				VALUES('".$username."' , '".$password1."')";
+                         
+        	$result = mysql_query($sql);
+		
+		if(!$result) {
+            		$errorMessage = 'Something went wrong while registering.';
+        	}
+        	
+		return $errorMessage;
+		
+	}
 ?>
 
 <?php
@@ -40,7 +33,7 @@ session_start();
 			$password1 = $_POST['pass1'];
 			$password2 = $_POST['pass2'];
 			$error = register($username,$password1,$password2);
-	}	
+	}
 ?>
 <html>
 	<head>
@@ -58,12 +51,6 @@ session_start();
 		.error {color: #FF0000;}
 		</style>
 		
-		<?php
-		if (!isset($_SESSION["userName"]))
-		{
-		$_SESSION["userName"] = "GUEST";
-		}
-		?>
 	</head>
 	
 	<header>
@@ -105,8 +92,8 @@ session_start();
 			echo " $username was successfully registered.<br><br>";
 		}
 		else 
-			echo $error, "<br><br>";           
-    }
+			echo $error, "<br><br>", mysql_error();
+	    	}
 ?>
 		<?php 
 		if (!isset($_SESSION["userName"]))

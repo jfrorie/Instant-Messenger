@@ -1,32 +1,46 @@
 <?php
 // Start the session
 session_start();
+include 'connect.php';
 ?>
+
 <?php
 function sendMessage($username,$message){
-	$errorMessage = "Invalid username";
+	$errorMessage = "";
 	if($username == "GUEST"){
 		$errorMessage = "GUEST cannot receive messages.";
 		return $errorMessage;
 	}
-	$file = fopen("users.txt","r");
-	   
-		while (!feof($file)) {
-			$line = fgets($file);
-			$arr = explode('-', $line);
-			if($arr[0] == $username) {
-				$errorMessage = "";
-				break;
-			}
-		}
-	fclose($flile);
-	
+
+	$sql = "SELECT 
+                        user_name
+                FROM
+                        users
+                WHERE
+                        user_name = '".$username."'";
+
+        $result = mysql_query($sql);
+        if(!$result){
+                 $errorMessage = "Somthing went wrong when sending the message.";
+        }
+        else{
+                if(mysql_num_rows($result) == 0)
+                {
+                    $errorMessage= "Invalid username";
+                }
+        }
+
+
 	if($errorMessage == ""){
+		//echo "message: ", $message, "<br>";
 		$sender = $_SESSION["userName"];
-		$file2 = fopen("$username-Messages.txt", "a+");
-		fwrite($file2, "\r\n$sender:$message");
+		$file = fopen("$username-Messages.txt", "a+");
+		if(!$file){
+			$errorMessage = "File failed to open or be created.";
+		}
+		fwrite($file, "\r\n$sender:$message");
 		
-		fclose($file2);
+		fclose($file);
 	}
 		
 	return $errorMessage;
@@ -112,7 +126,7 @@ function sendMessage($username,$message){
 			echo "Message successfully sent.<br><br>";
 		}
 		else 
-			echo $error, "<br><br>";           
+			echo $error, "<br><br>", mysql_error();           
     }
 	?>
 	

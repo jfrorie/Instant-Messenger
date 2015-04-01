@@ -1,38 +1,41 @@
 <?php
 // Start the session
 session_start();
+include 'connect.php';
 ?>
 
 <?php
 	function settings($oldpass,$password1,$password2){
 		$errorMessage = '';
-		
-		//make sure old password matches records
-		$file = fopen("users.txt","r");
-		while (!feof($file)) {
-			$line = fgets($file);
-			$arr = explode('-', $line);
-			$arr[1] = trim($arr[1]);
-			if($arr[0] == $_SESSION['userName'] && $arr[1] == $oldpass) {
-					$flag = true;
-			}
-		}
-		fclose($flile);
-		
-		if ($flag == false){
-			$errorMessage= "*Current password is incorrect.";
-			return $errorMessage;
-		}
-		
+
+		//Check if oldpass is correct
+		$sql = "SELECT 
+                        user_name
+                FROM
+                        users
+                WHERE
+                        user_pass = '".$oldpass."'";
+
+	        $result = mysql_query($sql);
+        	if(!$result){
+                	 $errorMessage = "Somthing went wrong with the sql.";
+        	}
+
+        	else{
+                	if(mysql_num_rows($result) == 0) {
+				$errorMessage= "Current password is incorrect.";
+                        	return $errorMessage;
+                	}
+        	}
+
 		//make sure new password matches
-		if (($password1==$password2) && flag == true){
+		if (($password1==$password2)){
 			changePass($oldpass,$password1);
 		}
 		else {
-			$errorMessage= "*Passwords do not match.";
+			$errorMessage= "Passwords do not match.";
 				return $errorMessage;
-		}
-		
+		}		
 		return $errorMessage;
 		
 	}
@@ -40,22 +43,23 @@ session_start();
 
 <?php	
 	function changePass($oldpass,$password1){
-		$newFile = array(); $i = 0;
-		$userName = $_SESSION['userName'];
-		$file = fopen("users.txt", "r");
-		//write the lines you want to keep to an array then append the changed version of line to end, write back to file
-		while (!feof($file)) {
-			$newFile[$i] = fgets($file);
-			++$i;
-		}
-		fclose($flile);
-		$file = fopen("users.txt", "w");
-		foreach($newFile as $line) {	
-			if (!strstr($line, "$userName-$oldpass" )) fwrite($file, $line);
-		}
-		fwrite($file, "\r\n$userName-$password1");
-		fclose($file);
-		return $i;
+		$sql = "UPDATE users
+              	SET user_pass = '".$password1."'
+                WHERE
+                        user_name = '".$_SESSION["userName"]."'";     
+
+                $result = mysql_query($sql);         
+                if(!$result){   
+                         $errorMessage = "Somthing went wrong with the sql.";
+                }
+
+                else{
+                        if(mysql_num_rows($result) == 0) {
+                                $errorMessage= "Username dose not exsit.";
+                                return $errorMessage;
+                        }
+                }
+
 	}
 ?>
 
@@ -134,7 +138,7 @@ session_start();
 				echo "Settings were successfully changed.<br><br>";
 			}
 			else {
-				echo $error, "<br><br>";   
+				echo $error, "<br><br>", mysql_error();   
 			}
 		}
 		

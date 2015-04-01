@@ -1,27 +1,42 @@
 <?php
 // Start the session
 session_start();
+include 'connect.php';
 ?>
+
+<?php
+
+//phpinfo();
+
+?>
+
 <?php
 function login($username,$password){
-	$errorMessage = "Invalid username or password";
-	$file = fopen("users.txt","r");
-	
-	while (!feof($file)) {
-			$line = fgets($file);
-			$arr = explode('-', $line);
-			$arr[1] = trim($arr[1]);
-			
-			if($arr[0] == $username && $arr[1] == $password ) {
-					$_SESSION['userName'] = $username;
-					$errorMessage = "";
-			}
+	$errorMessage = "";
+
+	 $sql = "SELECT 
+			user_name
+		FROM
+			users
+		WHERE
+			user_name = '".$username."'
+		AND
+                        user_pass = '".$password."'";	
+
+	$result = mysql_query($sql);
+        if(!$result){
+		 $errorMessage = "Somthing went wrong when signing in.";
+	}
+	else{
+		if(mysql_num_rows($result) == 0)
+                {
+                    $errorMessage= "Invalid username or password.";
+                }
+		$row = mysql_fetch_assoc($result);
+		$_SESSION['userName']  = $row['user_name'];
 	}
 	
-	fclose($flile);
 	return $errorMessage;
-
-	
 }
 ?>
 
@@ -101,11 +116,11 @@ function login($username,$password){
     if (isset($_POST['loginButton'])){
 
 		if ($error == '') {
-			echo " $username was successfully logged in.<br><br>";
+			echo "$username was successfully logged in.<br><br>";
 		
 		}
 		else 
-			echo $error, "<br><br>";           
+			echo $error, "<br><br>", mysql_error();           
     }
 ?>
 
