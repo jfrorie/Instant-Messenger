@@ -106,8 +106,9 @@ include 'check_signed_in.php';
 		<a href="account.php">LOGIN</a>
 		<a href="register.php">REGISTER</a>
 		<a href="logout.php">LOGOUT</a>
-		<a href="messages.php">MESSAGES</a>
-		<a href="upload.php">UPLOAD</a>		
+		<a href="upload.php">UPLOAD FILE</a> 
+		<a href="messages.php"> VIEW MESSAGES</a>
+		<a href="send_message.php">SEND MESSAGE</a>
 	</nav>
 	
 	<body>

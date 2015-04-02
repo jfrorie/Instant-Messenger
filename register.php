@@ -60,12 +60,13 @@ include 'check_signed_in.php';
 	
 	<nav>
 		<a href="main.php">HOME</a>
-		<a href="settings.php">SETTINGS</a>
-		<a href="account.php">LOGIN</a>
-		<a href="register.php">REGISTER</a>
-		<a href="logout.php">LOGOUT</a>
-		<a href="messages.php">MESSAGES</a>
-		<a href="upload.php">UPLOAD</a>
+                <a href="settings.php">SETTINGS</a>
+                <a href="account.php">LOGIN</a>
+                <a href="register.php">REGISTER</a>
+                <a href="logout.php">LOGOUT</a>
+                <a href="upload.php">UPLOAD FILE</a> 
+                <a href="messages.php"> VIEW MESSAGES</a>
+                <a href="send_message.php">SEND MESSAGE</a> 
 	</nav>
 	
 	<body>

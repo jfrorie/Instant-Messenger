@@ -7,9 +7,8 @@ include 'check_signed_in.php';
 function viewMessages($username){
 	
 	
-	if(fopen("$username-Messages.txt","r")){
-	$file = fopen("$username-Messages.txt","r");
-
+	$file = fopen("/var/www/html/Instant-Messenger/messages/$username-Messages.txt","r");
+	if($file){
 		while (!feof($file)) {
 			$line = fgets($file);
 			echo $line, "<br>";
@@ -19,7 +18,7 @@ function viewMessages($username){
 	}
 	
 	else{
-		echo "You have no messages.";
+		echo "You have no messages.<br><br><br>";
 	}
 }
 ?>
@@ -54,13 +53,14 @@ function viewMessages($username){
 		</header>
 		
 		<nav>
-		<a href="main.php">HOME</a>
-		<a href="settings.php">SETTINGS</a>
-		<a href="account.php">LOGIN</a>
-		<a href="register.php">REGISTER</a>
-		<a href="logout.php">LOGOUT</a>
-		<a href="messages.php">MESSAGES</a>
-		<a href="upload.php">UPLOAD</a>
+                <a href="main.php">HOME</a>
+                <a href="settings.php">SETTINGS</a>
+                <a href="account.php">LOGIN</a>
+                <a href="register.php">REGISTER</a>
+                <a href="logout.php">LOGOUT</a>
+                <a href="upload.php">UPLOAD FILE</a> 
+                <a href="messages.php"> VIEW MESSAGES</a>
+                <a href="send_message.php">SEND MESSAGE</a> 
 		</nav>
 		
 		<body>
@@ -69,20 +69,16 @@ function viewMessages($username){
 			{
 				echo "You must be logged in to use this functionality.";
 			}
-			else{ ?>
-		<?php
-			echo "Here are your messages: ". $_SESSION["userName"] ."<br><br>";
-		viewMessages($_SESSION["userName"]);
-			
-			
+			else{
+				echo "Here are your messages: ". $_SESSION["userName"] ."<br><br>";
+				viewMessages($_SESSION["userName"]);
 			
 		?>
+
 		
 		<?php
-		}
+			}
 		?>
-		
-		
 		
 		</body>
 

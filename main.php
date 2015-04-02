@@ -5,60 +5,6 @@ include 'connect.php';
 include 'check_signed_in.php';
 ?>
 
-<?php
-function sendMessage($username,$message){
-	$errorMessage = "";
-	if($username == "GUEST"){
-		$errorMessage = "GUEST cannot receive messages.";
-		return $errorMessage;
-	}
-
-	$sql = "SELECT 
-                        user_name
-                FROM
-                        users
-                WHERE
-                        user_name = '".$username."'";
-
-        $result = mysql_query($sql);
-        if(!$result){
-                 $errorMessage = "Somthing went wrong when sending the message.";
-        }
-        else{
-                if(mysql_num_rows($result) == 0)
-                {
-                    $errorMessage= "Invalid username";
-                }
-        }
-
-
-	if($errorMessage == ""){
-		//echo "message: ", $message, "<br>";
-		$sender = $_SESSION["userName"];
-		$file = fopen("$username-Messages.txt", "a+");
-		if(!$file){
-			$errorMessage = "File failed to open or be created.";
-		}
-		fwrite($file, "\r\n$sender:$message");
-		
-		fclose($file);
-	}
-		
-	return $errorMessage;
-}
-?>
-
-<?php
-
-	if (isset($_POST['MessageButton'])){
-		
-		$username  = $_POST['username'];
-		$message = $_POST['message'];
-		
-        $error = sendMessage($username, $message);
-	}	
-	
-?>
 <html>
 	<head>
 		<title> Group 10's Instant Messenger </title>
@@ -88,12 +34,13 @@ function sendMessage($username,$message){
 	
 	<nav>
 		<a href="main.php">HOME</a>
-		<a href="settings.php">SETTINGS</a>
-		<a href="account.php">LOGIN</a>
-		<a href="register.php">REGISTER</a>
-		<a href="logout.php">LOGOUT</a>
-		<a href="messages.php">MESSAGES</a>
-		<a href="upload.php">UPLOAD</a>
+                <a href="settings.php">SETTINGS</a>
+                <a href="account.php">LOGIN</a>
+                <a href="register.php">REGISTER</a>
+                <a href="logout.php">LOGOUT</a>
+                <a href="upload.php">UPLOAD FILE</a> 
+                <a href="messages.php"> VIEW MESSAGES</a>
+                <a href="send_message.php">SEND MESSAGE</a> 
 	</nav>
 	
 	<body>
@@ -105,7 +52,6 @@ function sendMessage($username,$message){
 		<br><br>
 
 		<?php
-			echo "Users currently signed in:<br>";
 			 $sql = "SELECT 
                  	       user_name
                 	FROM
@@ -122,6 +68,7 @@ function sendMessage($username,$message){
                     			echo "No one is signed in";
                 		}
 				else{
+					echo "Users currently signed in:<br>";
                 			while ($row = mysql_fetch_assoc($result)){
                 				echo $row['user_name'], "<br>";
 					}
