@@ -97,42 +97,10 @@ function sendMessage($username,$message){
 	<body>
 		<?php
 			echo "Welcome to A Highly Ungeneric Instant Messaging Service: ". $_SESSION["userName"] .".<br><br>";
-			
 		?>
-		
-		<?php
-			if ($_SESSION["userName"] == "GUEST")
-			{
-				echo "You must be logged in to use this functionality.";
-			}
-			else{ 
-				echo "Send a Message<br><br>";
-		?>
-		<form id="sendMessage" name="sendMessage" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-		RECIPIENT:  
-		<input type="text" name ="username" required>  <br>
-		MESSAGE:  
-		<input type="message" name="message" required> <br> <br>
-		<input type="submit" value="SUBMIT" name="MessageButton" >
-		</form>
-		
-
-		
-	<?php 
-  
-    if (isset($_POST['MessageButton'])){
-
-		if ($error == "") {
-			echo "Message successfully sent.<br><br>";
-		}
-		else 
-			echo $error, "<br><br>", mysql_error();           
-    }
-	?>
-	
-	<?php
-	}
-	?>
+		<iframe WIDTH="200" HEIGHT="400" title="Shoutbox" src="http://shoutbox.widget.me/window.html?uid=jqngob6w" frameborder="0" scrolling="auto"></iframe>
+		<script src="http://shoutbox.widget.me/v1.js" type="text/javascript"></script>
+		<br><br>
 	</body>
 	
 </html>
