@@ -101,6 +101,32 @@ function sendMessage($username,$message){
 		<iframe WIDTH="200" HEIGHT="400" title="Shoutbox" src="http://shoutbox.widget.me/window.html?uid=jqngob6w" frameborder="0" scrolling="auto"></iframe>
 		<script src="http://shoutbox.widget.me/v1.js" type="text/javascript"></script>
 		<br><br>
+
+		<?php
+			echo "Users currently signed in:<br>";
+			 $sql = "SELECT 
+                 	       user_name
+                	FROM
+                        	users
+                	WHERE
+                        	is_signed_in = '1'";
+
+        		$result = mysql_query($sql);
+        		if(!$result){
+				echo "Somthing went wrong with the sql: ", mysql_error();
+        		}
+        		else{
+                		if(mysql_num_rows($result) == 0){
+                    			echo "No one is signed in";
+                		}
+				else{
+                			while ($row = mysql_fetch_assoc($result)){
+                				echo $row['user_name'], "<br>";
+					}
+				}
+        		}
+
+		?>
 	</body>
 	
 </html>

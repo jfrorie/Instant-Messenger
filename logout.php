@@ -1,6 +1,7 @@
 <?php
 // Start the session
 session_start();
+include 'connect.php';
 ?>
 <html>
 	<head>
@@ -21,6 +22,16 @@ session_start();
 		</style>
 		
 		<?php
+		$sql = "UPDATE users
+                SET is_signed_in = '0'  
+                WHERE
+                        user_name = '".$_SESSION["userName"]."'";
+
+     	   	$result = mysql_query($sql);
+        	if(!$result){
+                	$errorMessage = "You are signed out, Somthing went wrong when updating is_singed_in variable.";
+        	}
+
 		// remove all session variables
 		session_unset(); 
 

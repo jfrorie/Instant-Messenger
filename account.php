@@ -35,7 +35,17 @@ function login($username,$password){
 		$row = mysql_fetch_assoc($result);
 		$_SESSION['userName']  = $row['user_name'];
 	}
-	
+
+	 $sql = "UPDATE users
+                SET is_signed_in = '1'
+                WHERE
+                        user_name = '".$_SESSION["userName"]."'";
+
+	$result = mysql_query($sql);
+	if(!$result){
+                 $errorMessage = "You are signed in, Somthing went wrong when updating is_singed_in variable.";
+        }
+
 	return $errorMessage;
 }
 ?>

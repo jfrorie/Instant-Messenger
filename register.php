@@ -13,8 +13,8 @@ include 'connect.php';
 				return $errorMessage;
 		}
 		
-		$sql = "INSERT INTO users(user_name, user_pass)
-				VALUES('".$username."' , '".$password1."')";
+		$sql = "INSERT INTO users(user_name, user_pass, is_signed_in)
+				VALUES('".$username."' , '".$password1."' , 0)";
                          
         	$result = mysql_query($sql);
 		
