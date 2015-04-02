@@ -56,13 +56,18 @@ session_start();
 	<h2>Uploaded Files</h2>
 	<?php
 
-		
-		$handle = opendir('uploads/');
+		$dir ="/var/www/html/Instant-Messenger/uploads/" .  $_SESSION["userName"] . "/";
+
+		if(!file_exists($dir)){
+			mkdir($dir,0777);
+		}
+
+		$handle = opendir($dir);
 	
 		if($handle) {
 			while(false !== ($entry = readdir($handle))) {
 				if($entry != "." && $entry != ".."){
-					echo "<a href=\"uploads/$entry\">$entry</a><br>";
+					echo "<a href=\"$dir$entry\">$entry</a><br>";
 				}
 			}
 			closedir($handle);
@@ -82,8 +87,8 @@ session_start();
 		$allowed = array('txt', 'pdf', 'doc', 'ppt', 'jpg', 'png', 'jpeg','docx', 'pptx');
 	
 		$checkUpload = 1;	
-		$checkExists = 'uploads/' . $file_name;
-		$file_destination = 'uploads/' . $file_name;
+		$checkExists = $dir . $file_name;
+		$file_destination = $dir . $file_name;
 		if($file_name == NULL){
 			echo "Select a file";
 		}
