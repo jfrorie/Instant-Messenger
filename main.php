@@ -2,6 +2,7 @@
 // Start the session
 session_start();
 include 'connect.php';
+include 'check_signed_in.php';
 ?>
 
 <?php
@@ -92,13 +93,14 @@ function sendMessage($username,$message){
 		<a href="register.php">REGISTER</a>
 		<a href="logout.php">LOGOUT</a>
 		<a href="messages.php">MESSAGES</a>
+		<a href="upload.php">UPLOAD</a>
 	</nav>
 	
 	<body>
 		<?php
 			echo "Welcome to A Highly Ungeneric Instant Messaging Service: ". $_SESSION["userName"] .".<br><br>";
 		?>
-		<iframe WIDTH="200" HEIGHT="400" title="Shoutbox" src="http://shoutbox.widget.me/window.html?uid=jqngob6w" frameborder="0" scrolling="auto"></iframe>
+		<iframe WIDTH="500" HEIGHT="500" title="Shoutbox" src="http://shoutbox.widget.me/window.html?uid=jqngob6w" frameborder="0" scrolling="auto"></iframe>
 		<script src="http://shoutbox.widget.me/v1.js" type="text/javascript"></script>
 		<br><br>
 

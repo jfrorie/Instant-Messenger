@@ -1,6 +1,7 @@
 <?php
 // Start the session
 session_start();
+include 'check_signed_in.php';
 ?>
 <?php
 function viewMessages($username){
@@ -59,6 +60,7 @@ function viewMessages($username){
 		<a href="register.php">REGISTER</a>
 		<a href="logout.php">LOGOUT</a>
 		<a href="messages.php">MESSAGES</a>
+		<a href="upload.php">UPLOAD</a>
 		</nav>
 		
 		<body>

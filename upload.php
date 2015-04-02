@@ -1,7 +1,7 @@
 <?php
 session_start();
+include 'check_signed_in.php';
 ?>
-
 <html>
 	<head>
 		<title>Group 10's Instant Messenger</title>
@@ -25,11 +25,9 @@ session_start();
 		}
 		?>
 	</head>
-
 	<header>
 		<h1>A Highly Ungeneric Instant Messaging Service</h1>
 	</header>
-
 	<nav>
 	<a href="main.php">HOME</a>
 	<a href="settings.php">SETTINGS</a>
@@ -39,8 +37,6 @@ session_start();
 	<a href="messages.php">MESSAGES</a>
 	<a href="upload.php">UPLOAD</a>
 	</nav>
-
-
 	<?php
 	if($_SESSION["userName"] == "GUEST"){
 		echo "<br>You are logged in as a GUEST.<br>You are not allowed to upload files.";
@@ -56,7 +52,6 @@ session_start();
 	
 	<br>
 	<h2>Uploaded Files</h2>
-
 	<?php
 		
 		$handle = opendir('uploads/');
@@ -70,9 +65,7 @@ session_start();
 			closedir($handle);
 		}
 	?>
-
 	<br>
-
 	<?php
 	if(isset($_FILES['file'])){
 		$file = $_FILES['file'];
@@ -81,16 +74,13 @@ session_start();
 		$file_temp = $file['tmp_name'];
 		$file_size = $file['size'];
 		$file_error = $file['error'];
-
 		$file_ext = explode('.', $file_name);
 		$file_ext = strtolower(end($file_ext));
-
 		$allowed = array('txt', 'pdf', 'doc', 'ppt', 'jpg', 'png', 'jpeg');
 	
 		$checkUpload = 1;	
 		$checkExists = 'uploads/' . $file_name;
 		$file_destination = 'uploads/' . $file_name;
-
 		if($file_name == NULL){
 			echo "Select a file";
 		}
@@ -102,14 +92,11 @@ session_start();
 				echo "<br>There was an error with the file.";
 				$checkUpload = 0;
 			}
-
-
 			if(file_exists($checkExists)){
 				echo "<br>A file with the same name already exists.";
 				echo "<br>Change name of file if you still wish to upload.";
 				$checkUpload = 0;
 			}
-
 		
 			if($file_size > 2097152) {
 				echo "<br>File size is too big.";
@@ -121,7 +108,6 @@ session_start();
 				echo " ";
 				$checkUpload = 0;
 			}
-
 			if($checkUpload == 0){
 				echo "<br>File was not uploaded.";
 			}
@@ -140,3 +126,4 @@ session_start();
 	?>
 	</body>
 </html>
+

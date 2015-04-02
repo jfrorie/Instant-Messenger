@@ -2,6 +2,7 @@
 // Start the session
 session_start();
 include 'connect.php';
+include 'check_signed_in.php';
 ?>
 <?php
 	function register($username,$password1,$password2){ 
@@ -64,6 +65,7 @@ include 'connect.php';
 		<a href="register.php">REGISTER</a>
 		<a href="logout.php">LOGOUT</a>
 		<a href="messages.php">MESSAGES</a>
+		<a href="upload.php">UPLOAD</a>
 	</nav>
 	
 	<body>

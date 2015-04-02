@@ -96,6 +96,7 @@ function login($username,$password){
 		<a href="register.php">REGISTER</a>
 		<a href="logout.php">LOGOUT</a>
 		<a href="messages.php">MESSAGES</a>
+		<a href="upload.php">UPLOAD</a>
 	</nav>
 	
 	<body>
