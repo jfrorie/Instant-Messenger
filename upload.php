@@ -1,6 +1,5 @@
 <?php
 session_start();
-include 'check_signed_in.php';
 ?>
 <html>
 	<head>
@@ -29,13 +28,15 @@ include 'check_signed_in.php';
 		<h1>A Highly Ungeneric Instant Messaging Service</h1>
 	</header>
 	<nav>
-	<a href="main.php">HOME</a>
-	<a href="settings.php">SETTINGS</a>
-	<a href="account.php">LOGIN</a>
-	<a href="register.php">REGISTER</a>
-	<a href="logout.php">LOGOUT</a>
-	<a href="messages.php">MESSAGES</a>
-	<a href="upload.php">UPLOAD</a>
+		<a href="main.php">HOME</a>
+                <a href="settings.php">SETTINGS</a>
+                <a href="account.php">LOGIN</a>
+                <a href="register.php">REGISTER</a>
+                <a href="logout.php">LOGOUT</a>
+                <a href="upload.php">UPLOAD FILE</a> 
+                <a href="messages.php"> VIEW MESSAGES</a>
+                <a href="send_message.php">SEND MESSAGE</a> 
+
 	</nav>
 	<?php
 	if($_SESSION["userName"] == "GUEST"){
@@ -45,6 +46,7 @@ include 'check_signed_in.php';
 	?>
 	<body>
 		<h2>Upload File</h2>
+		<p><b>Allowed file formats: txt, pdf, doc, docx, ppt, pptx, jpg, png</b></p>
 		<form action="upload.php" method="POST" enctype="multipart/form-data">
 			<input type="file" name="file" id="file">
 			<input type="submit" value="upload" name="sumbit">
@@ -53,6 +55,7 @@ include 'check_signed_in.php';
 	<br>
 	<h2>Uploaded Files</h2>
 	<?php
+
 		
 		$handle = opendir('uploads/');
 	
@@ -76,7 +79,7 @@ include 'check_signed_in.php';
 		$file_error = $file['error'];
 		$file_ext = explode('.', $file_name);
 		$file_ext = strtolower(end($file_ext));
-		$allowed = array('txt', 'pdf', 'doc', 'ppt', 'jpg', 'png', 'jpeg');
+		$allowed = array('txt', 'pdf', 'doc', 'ppt', 'jpg', 'png', 'jpeg','docx', 'pptx');
 	
 		$checkUpload = 1;	
 		$checkExists = 'uploads/' . $file_name;
@@ -126,4 +129,3 @@ include 'check_signed_in.php';
 	?>
 	</body>
 </html>
-
