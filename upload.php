@@ -57,7 +57,7 @@ session_start();
 	<?php
 
 		$dir ="/var/www/html/Instant-Messenger/uploads/" .  $_SESSION["userName"] . "/";
-
+		$dir_temp = "/Instant-Messenger/uploads/" . $_SESSION["userName"] . "/";
 		if(!file_exists($dir)){
 			mkdir($dir,0777);
 		}
@@ -67,7 +67,7 @@ session_start();
 		if($handle) {
 			while(false !== ($entry = readdir($handle))) {
 				if($entry != "." && $entry != ".."){
-					echo "<a href=\"$dir$entry\">$entry</a><br>";
+					echo "<a href=\"$dir_temp$entry\">$entry</a><br>";
 				}
 			}
 			closedir($handle);
