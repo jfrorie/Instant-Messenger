@@ -26,7 +26,8 @@ include 'check_signed_in.php';
 		$_SESSION["userName"] = "GUEST";
 		}
 		?>
-		
+		<link rel="stylesheet" type="text/css" href="cb_style.css">
+		<script type="text/javascript" src="chatjax.js"></script>
 	</head>
 	<header>
 		<h1>A Highly Ungeneric Instant Messaging Service</h1>
@@ -47,9 +48,6 @@ include 'check_signed_in.php';
 		<?php
 			echo "Welcome to A Highly Ungeneric Instant Messaging Service: ". $_SESSION["userName"] .".<br><br>";
 		?>
-		<iframe WIDTH="500" HEIGHT="500" title="Shoutbox" src="http://shoutbox.widget.me/window.html?uid=jqngob6w" frameborder="0" scrolling="auto"></iframe>
-		<script src="http://shoutbox.widget.me/v1.js" type="text/javascript"></script>
-		<br><br>
 
 		<?php
 			 $sql = "SELECT 
@@ -74,8 +72,25 @@ include 'check_signed_in.php';
 					}
 				}
         		}
+		echo "<br><br>"
 
 		?>
+		Random Chat: Room1 
+		<!-- this sign in is currently dif from main accounts, modify chatjax.js login to change that -->
+		<form onsubmit="signInOut();return false" id="signInForm">
+		<input id="userName" type="text">
+		<input id="signInButt" name="signIn" type="submit" value="Sign in">
+		<span id="signInName">User name</span>
+		</form>
+
+		<div id="chatBox"></div>
+		<div id="usersOnLine"></div>
+		<form onsubmit="sendMessage();return false" id="messageForm">
+		<input id="message" type="text">
+		<input id="send" type="submit" value="Send">
+		<div id="serverRes"></div></form>
+
+
 	</body>
 	
 </html>
