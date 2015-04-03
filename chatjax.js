@@ -42,7 +42,7 @@ lastReceived=0;
 // Hide the message form
 function hideShow(hs){
 if(hs=="hide"){
-signInForm.signInButt.value="Sign in"
+signInForm.signInButt.value="Connect"
 signInForm.signInButt.name="signIn"
 messageForm.style.display="none"
 signInForm.userName.style.display="block"
