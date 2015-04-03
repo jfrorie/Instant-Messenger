@@ -4,7 +4,6 @@ session_start();
 include 'connect.php';
 include 'check_signed_in.php';
 ?>
-
 <html>
 	<head>
 		<title> Group 10's Instant Messenger </title>
@@ -48,7 +47,6 @@ include 'check_signed_in.php';
 		<?php
 			echo "Welcome to A Highly Ungeneric Instant Messaging Service: ". $_SESSION["userName"] .".<br><br>";
 		?>
-
 		<?php
 			 $sql = "SELECT 
                  	       user_name
@@ -56,7 +54,6 @@ include 'check_signed_in.php';
                         	users
                 	WHERE
                         	is_signed_in = '1'";
-
         		$result = mysql_query($sql);
         		if(!$result){
 				echo "Somthing went wrong with the sql: ", mysql_error();
@@ -73,24 +70,21 @@ include 'check_signed_in.php';
 				}
         		}
 		echo "<br><br>"
-
 		?>
 		Random Chat: Room1 
 		<!-- this sign in is currently dif from main accounts, modify chatjax.js login to change that -->
 		<form onsubmit="signInOut();return false" id="signInForm">
 		<input id="userName" type="text">
-		<input id="signInButt" name="signIn" type="submit" value="Sign in">
-		<span id="signInName">User name</span>
+		<input id="signInButt" name="signIn" type="submit" value="Connect">
+		<span id="signInName">Alias</span>
 		</form>
-
 		<div id="chatBox"></div>
 		<div id="usersOnLine"></div>
 		<form onsubmit="sendMessage();return false" id="messageForm">
 		<input id="message" type="text">
 		<input id="send" type="submit" value="Send">
 		<div id="serverRes"></div></form>
-
-
 	</body>
 	
 </html>
+

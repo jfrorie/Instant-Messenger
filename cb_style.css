@@ -1,4 +1,4 @@
-﻿#signInForm, #messageForm {
+#signInForm, #messageForm {
 	margin:0px;
 	margin-bottom:1px;
 }
@@ -9,7 +9,7 @@
 	float:left;
 }
 #signInButt {
-	width: 60px;
+	width: 80px;
 	height: 22px;
 }	
 #signInName{
