@@ -43,7 +43,7 @@ include 'check_signed_in.php';
                 <a href="send_message.php">SEND MESSAGE</a> 
 	</nav>
 	
-	<body>
+	<body onbeforeunload="signInForm.signInButt.name='signOut';signInOut()" onload="hideShow('hide')">
 		<?php
 			echo "Welcome to A Highly Ungeneric Instant Messaging Service: ". $_SESSION["userName"] .".<br><br>";
 		?>
