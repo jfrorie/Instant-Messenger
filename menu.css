@@ -85,6 +85,7 @@ Adapted by: Omar Zambrano
 .rmm.graphite .rmm-main-list li a:hover {
 	background-image:url('../rmm-img/graphite-menu-bg-hover.png');
 }
+/*
 .rmm.graphite .rmm-main-list li:first-child a {
 -webkit-border-top-left-radius: 6px;
 -webkit-border-bottom-left-radius: 6px;
@@ -101,6 +102,7 @@ border-bottom-left-radius: 6px;
 border-top-right-radius: 6px;
 border-bottom-right-radius: 6px;
 }
+*/
 .rmm.graphite .rmm-toggled {
 	width:95%;
 	background-color:#555555;
