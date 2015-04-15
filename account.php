@@ -70,9 +70,6 @@ function login($username,$password){
 			text-align: center;
 			padding: 5px;
 		}
-		nav {
-			text-align: center;
-		}
 		.error {color: #FF0000;}
 		</style>
 		
@@ -86,20 +83,12 @@ function login($username,$password){
 	</head>
 	
 	<header>
-		<h1>A Highly Ungeneric Instant Messaging Service</h1>
+		<h1>Group 10's IM</h1>
 	</header>
-	
-	<nav>
-		<a href="main.php">HOME</a>
-                <a href="settings.php">SETTINGS</a>
-                <a href="account.php">LOGIN</a>
-                <a href="register.php">REGISTER</a>
-                <a href="logout.php">LOGOUT</a>
-                <a href="upload.php">UPLOAD FILE</a> 
-                <a href="messages.php"> VIEW MESSAGES</a>
-                <a href="send_message.php">SEND MESSAGE</a> 
-	</nav>
-	
+
+	<?php include "menu.php";?>
+
+
 	<body>
 		
  <?php
@@ -109,7 +98,7 @@ function login($username,$password){
 		<form id="login" name="login" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
 		USERNAME:  
 		<input type="text" name ="username" required>  <br>
-		PASSWORD:  
+		PASSWORD:     
 		<input type="password" name="password" required> <br> <br>
 		<input type="submit" value="SUBMIT" name="loginButton" >
 		</form>

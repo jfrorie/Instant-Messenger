@@ -97,20 +97,10 @@ include 'check_signed_in.php';
 	</head>
 	
 	<header>
-		<h1>A Highly Ungeneric Instant Messaging Service</h1>
+                <h1>Group 10's IM</h1>
 	</header>
 	
-	<nav>
-		<a href="main.php">HOME</a>
-		<a href="settings.php">SETTINGS</a>
-		<a href="account.php">LOGIN</a>
-		<a href="register.php">REGISTER</a>
-		<a href="logout.php">LOGOUT</a>
-		<a href="upload.php">UPLOAD FILE</a> 
-		<a href="messages.php"> VIEW MESSAGES</a>
-		<a href="send_message.php">SEND MESSAGE</a>
-	</nav>
-	
+	<?php include "menu.php";?>	
 	<body>
 		<br>This page will contain resources to change user settings. <br><br><hr><br>
 		<?php
