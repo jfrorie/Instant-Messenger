@@ -37,7 +37,7 @@ function login($username,$password){
 	}
 
 	 $sql = "UPDATE users
-                SET is_signed_in = '1'
+                SET is_signed_in = is_signed_in + 1
                 WHERE
                         user_name = '".$_SESSION["userName"]."'";
 
@@ -61,32 +61,38 @@ function login($username,$password){
 	}	
 ?>
 <html>
-	<head>
-		<title> Group 10's Instant Messenger </title>
-		<style>
-		header { 
-			background-color: black;
-			color: white;
-			text-align: center;
-			padding: 5px;
-		}
-		.error {color: #FF0000;}
-		</style>
-		
-		<?php
-		if (!isset($_SESSION["userName"]))
-		{
-		$_SESSION["userName"] = "GUEST";
-		}
-		?>
+        <head>
+                <meta charset="utf-8">
 
-	</head>
-	
-	<header>
-		<h1>Group 10's IM</h1>
-	</header>
+                <title> Group 10's Instant Messenger </title>
+                <style>
+                header { 
+                        background:#1E1E1E;
+                        color: white;
+                        text-align: center;
+                        padding: 5px;
+                }
+                </style>
+                
+                <?php
+                if (!isset($_SESSION["userName"]))
+                {
+                $_SESSION["userName"] = "GUEST";
+                }
+                ?>
+                <link rel="stylesheet" type="text/css" href="cb_style.css">
+                <script type="text/javascript" src="chatjax.js"></script>
 
-	<?php include "menu.php";?>
+                <link href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/css/bootstrap.css" rel="stylesheet">
+                <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+      <link href="css/custom.css" rel="stylesheet">
+        </head>
+        <header>
+                <h1>Group 10's IM</h1>
+                <?php include "menu.php";?>
+
+        </header>
+        
 
 
 	<body>

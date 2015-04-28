@@ -2,32 +2,39 @@
 session_start();
 ?>
 <html>
-	<head>
-		<title>Group 10's Instant Messenger</title>
-		<style>
-		header {
-			background-color: black;
-			color: white;
-			text-align: center;
-			padding: 5px;
-		}
-		nav {
-			text-align: center
-		}
-		body {
-		}
-		</style>
-		<?php
-		if (!isset($_SESSION["userName"]))
-		{
-			$_SESSION["userName"] = "GUEST";
-		}
-		?>
-	</head>
-	<header>
+        <head>
+                <meta charset="utf-8">
+
+                <title> Group 10's Instant Messenger </title>
+                <style>
+                header { 
+                        background:#1E1E1E;
+                        color: white;
+                        text-align: center;
+                        padding: 5px;
+                }
+                </style>
+                
+                <?php
+                if (!isset($_SESSION["userName"]))
+                {
+                $_SESSION["userName"] = "GUEST";
+                }
+                ?>
+                <link rel="stylesheet" type="text/css" href="cb_style.css">
+                <script type="text/javascript" src="chatjax.js"></script>
+
+                <link href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/css/bootstrap.css" rel="stylesheet">
+                <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+      <link href="css/custom.css" rel="stylesheet">
+        </head>
+        <header>
                 <h1>Group 10's IM</h1>
-	</header>
-		<?php include "menu.php";?>
+                <?php include "menu.php";?>
+
+        </header>
+        
+
 	<?php
 	if($_SESSION["userName"] == "GUEST"){
 		echo "<br>You are logged in as a GUEST.<br>You are not allowed to upload files.";
@@ -124,3 +131,4 @@ session_start();
 	?>
 	</body>
 </html>
+

@@ -23,7 +23,7 @@ include 'connect.php';
 		
 		<?php
 		$sql = "UPDATE users
-                SET is_signed_in = '0'  
+                 SET is_signed_in = is_signed_in - 1
                 WHERE
                         user_name = '".$_SESSION["userName"]."'";
 
