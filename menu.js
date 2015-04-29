@@ -12,9 +12,7 @@ Adapted by: Omar Zambrano
 
 function responsiveMobileMenu() {	
 		$('.rmm').each(function() {
-			
-			
-			
+						
 			$(this).children('ul').addClass('rmm-main-list');	// mark main menu list
 			
 			
@@ -73,7 +71,7 @@ function adaptMenu() {
 	$('.rmm').each(function() {
 			var $width = $(this).css('max-width');
 			$width = $width.replace('px', ''); 
-			if ( $(this).parent().width() < $width*0.5 ) {
+			if ( $(this).parent().width() < $width*.55 ) {
 				$(this).children('.rmm-main-list').hide(0);
 				$(this).children('.rmm-toggled').show(0);
 			}
