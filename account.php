@@ -1,24 +1,52 @@
 <?php
 // Start the session
 session_start();
+include 'connect.php';
 ?>
+
+<?php
+
+//phpinfo();
+
+?>
+
 <?php
 function login($username,$password){
-	$errorMessage = "Invalid username or password";
-	$file = fopen("users.txt","r");
-	
-	while (!feof($file)) {
-			$line = fgets($file);
-			$arr = explode('-', $line);
-			if($arr[0] == $username && $arr[0] =  $password) {
-					$_SESSION['userName'] = $username;
-					$errorMessage = "";
-			}
-	}
-	
-	return $errorMessage;
+	$errorMessage = "";
 
-	
+	 $sql = "SELECT 
+			user_name
+		FROM
+			users
+		WHERE
+			user_name = '".$username."'
+		AND
+                        user_pass = '".$password."'";	
+
+	$result = mysql_query($sql);
+        if(!$result){
+		 $errorMessage = "Somthing went wrong when signing in.";
+	}
+	else{
+		if(mysql_num_rows($result) == 0)
+                {
+                    $errorMessage= "Invalid username or password.";
+                }
+		$row = mysql_fetch_assoc($result);
+		$_SESSION['userName']  = $row['user_name'];
+	}
+
+	 $sql = "UPDATE users
+                SET is_signed_in = is_signed_in + 1
+                WHERE
+                        user_name = '".$_SESSION["userName"]."'";
+
+	$result = mysql_query($sql);
+	if(!$result){
+                 $errorMessage = "You are signed in, Somthing went wrong when updating is_singed_in variable.";
+        }
+
+	return $errorMessage;
 }
 ?>
 
@@ -33,37 +61,59 @@ function login($username,$password){
 	}	
 ?>
 <html>
-	<head>
-		<title> Group 10's Instant Messenger </title>
+        <head>
+                <meta charset="utf-8">
+
+                <title> Group 10's Instant Messenger </title>
 		<style>
-		header { 
-			background-color: black;
-			color: white;
-			text-align: center;
-			padding: 5px;
-		}
-		nav {
-			text-align: center;
-		}
-		.error {color: #FF0000;}
-		</style>
-		
-	</head>
-	
-	<header>
-		<h1>A Highly Ungeneric Instant Messaging Service</h1>
-	</header>
-	
-	<nav>
-		<a href="main.php">HOME</a>
-		<a href="settings.php">SETTINGS</a>
-		<a href="account.php">LOGIN</a>
-		<a href="register.php">REGISTER</a>
-		<a href="logout.php">LOGOUT</a>
-	</nav>
-	
+                header { 
+                        background:#1E1E1E;
+                        color: white;
+                        text-align: center;
+                        padding: 5px;
+                }
+                body{
+                        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+                        margin: 0px;
+                        color: white;
+                        background-image: url("background8.jpg");
+                        background-size:cover;
+                }
+                h1{
+                        font-weight: lighter;
+                        margin: .67em 0;
+                        font-size: 36px; 
+
+                }
+                </style>
+                
+                <?php
+                if (!isset($_SESSION["userName"]))
+                {
+                $_SESSION["userName"] = "GUEST";
+                }
+                ?>
+
+
+        </head>
+        <header>
+                <h1>Group 10's IM</h1>
+		<?php
+                if ( (!isset($_SESSION["userName"])) || ($_SESSION["userName"] == "GUEST") ){
+                        include "menu_guest.php";
+                }
+                else{
+                        include "menu.php";
+                }
+                ?>
+
+
+        </header>
+        
+
+
 	<body>
-		
+	<div align = center>
  <?php
 	if( $_SESSION["userName"] == "GUEST"){
 	?>
@@ -71,11 +121,11 @@ function login($username,$password){
 		<form id="login" name="login" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
 		USERNAME:  
 		<input type="text" name ="username" required>  <br>
-		PASSWORD:  
+		PASSWORD:     
 		<input type="password" name="password" required> <br> <br>
 		<input type="submit" value="SUBMIT" name="loginButton" >
 		</form>
-		<br><hr><br>
+		
 <?php
 	}
 	else{
@@ -90,14 +140,14 @@ function login($username,$password){
     if (isset($_POST['loginButton'])){
 
 		if ($error == '') {
-			echo " $username was successfully logged in.<br><br>";
+			echo "$username was successfully logged in.<br><br>";
 		
 		}
 		else 
-			echo $error, "<br><br>";           
+			echo $error, "<br><br>", mysql_error();           
     }
 ?>
 
-
+	</div>
 	</body>
 </html>

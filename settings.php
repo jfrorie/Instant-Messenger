@@ -79,32 +79,44 @@ include 'check_signed_in.php';
                 <meta charset="utf-8">
 
                 <title> Group 10's Instant Messenger </title>
-                <style>
+
+		 <style>
                 header { 
                         background:#1E1E1E;
                         color: white;
                         text-align: center;
                         padding: 5px;
                 }
-		 body{
-                        margin: 0px; 
+                body{
+                        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+                        margin: 0px;
                         color: white;
                         background-image: url("background8.jpg");
                         background-size:cover;
                 }
+                h1{
+                        font-weight: lighter;
+                        margin: .67em 0;
+                        font-size: 36px; 
 
+                }
+		label{
+			display: inline-block;
+                        width: 200px;
+		}
+		
+		input {
+  			display: inline-block;
+		}
                 </style>
-                
+
                 <?php
                 if (!isset($_SESSION["userName"]))
                 {
                 $_SESSION["userName"] = "GUEST";
                 }
                 ?>
-                <link rel="stylesheet" type="text/css" href="cb_style.css">
-                <script type="text/javascript" src="chatjax.js"></script>
-                <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-      <link href="css/custom.css" rel="stylesheet">
+
         </head>
         <header>
                 <h1>Group 10's IM</h1>
@@ -125,18 +137,18 @@ include 'check_signed_in.php';
 		<?php
 			if ($_SESSION["userName"] == "GUEST")
 			{
-				echo "You must be logged in to use this functionality.";
+				echo "<br>You must be logged in to use this functionality.";
 			}
 			else{ ?>
 			
-				Utilize This Form To Change Your Password: <br>
+				<br>Utilize This Form To Change Your Password: <br>
 				<form id="settings" name="settings" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-				New Password:
+				<label>New Password:</label>
 				<input type="password" name="npass1" id="npass1" required> <br>
-				Confirm New Password:
+				<label>Confirm New Password:</label>
 				<input type="password" name="npass2" id="npass2" required> <br>
-				Enter Current Password to Alter Settings:
-				<input type="password" name="opass" id="opass" required> <br>
+				<label>Current Password:</label>
+				<input type="password" name="opass" id="opass" required> <br><br>
 				<input type="submit" value="SUBMIT" name="settingsButton">
 				</form>
 			<?php } ?>

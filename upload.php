@@ -14,12 +14,20 @@ include 'connect.php';
                         text-align: center;
                         padding: 5px;
                 }
-		body{
-			margin:0px;
-			background-image: url("background8.jpg");
-			color:white;
-			background-size:cover;
-		}
+                body{
+                        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+                        margin: 0px;
+                        color: white;
+                        background-image: url("background8.jpg");
+                        background-size:cover;
+                }
+                h1{
+                        font-weight: lighter;
+                        margin: .67em 0;
+                        font-size: 36px; 
+
+                }
+
 		a{
 			color: #CCFFCC;
 		}
@@ -33,10 +41,6 @@ include 'connect.php';
 	                $_SESSION["userName"] = "GUEST";
                 }
                 ?>
-                <link rel="stylesheet" type="text/css" href="cb_style.css">
-                <script type="text/javascript" src="chatjax.js"></script>
-                <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-      <link href="css/custom.css" rel="stylesheet">
         </head>
         <header>
                 <h1>Group 10's IM</h1>

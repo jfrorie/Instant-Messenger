@@ -28,20 +28,27 @@ function viewMessages($username){
                 <meta charset="utf-8">
 
                 <title> Group 10's Instant Messenger </title>
-                <style>
+		
+		<style>
                 header { 
                         background:#1E1E1E;
                         color: white;
                         text-align: center;
                         padding: 5px;
                 }
-		 body{
-                        margin: 0px; 
+                body{
+                        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+                        margin: 0px;
                         color: white;
                         background-image: url("background8.jpg");
                         background-size:cover;
                 }
+                h1{
+                        font-weight: lighter;
+                        margin: .67em 0;
+                        font-size: 36px; 
 
+                }
                 </style>
                 
                 <?php
@@ -50,11 +57,6 @@ function viewMessages($username){
                 $_SESSION["userName"] = "GUEST";
                 }
                 ?>
-                <link rel="stylesheet" type="text/css" href="cb_style.css">
-                <script type="text/javascript" src="chatjax.js"></script>
-
-                <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-      <link href="css/custom.css" rel="stylesheet">
         </head>
         <header>
                 <h1>Group 10's IM</h1>
@@ -80,7 +82,7 @@ function viewMessages($username){
 				echo "<br>You must be logged in to use this functionality.";
 			}
 			else{
-				echo "Here are your messages: ". $_SESSION["userName"] ."<br><br>";
+				echo "<br>Here are your messages: ". $_SESSION["userName"] ."<br><br>";
 				viewMessages($_SESSION["userName"]);
 			
 		?>

@@ -12,11 +12,11 @@
             <ul>
                 <li><a href="main.php">HOME</a></li>
                 <li><a href="settings.php">SETTINGS</a></li>
-                <li><a href="logout.php">LOGOUT</a></li>
                 <li><a href="upload.php">UPLOAD FILE</a></li>
                 <li><a href="messages.php"> VIEW MESSAGES</a></li>
                 <li><a href="send_message.php">SEND MESSAGE</a></li>
 		<li><a href="http://uaf59248.ddns.uark.edu:3000">VIDEO CHAT</a></li> 
+		<li><a href="logout.php">LOGOUT</a></li>
             </ul>
         </div>
 </body>

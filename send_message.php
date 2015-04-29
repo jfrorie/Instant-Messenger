@@ -59,18 +59,32 @@ function sendMessage($username,$message){
                 <meta charset="utf-8">
 
                 <title> Group 10's Instant Messenger </title>
-                <style>
+<style>
                 header { 
                         background:#1E1E1E;
                         color: white;
                         text-align: center;
                         padding: 5px;
                 }
-		 body{
-                        margin: 0px; 
+                body{
+                        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+                        margin: 0px;
                         color: white;
                         background-image: url("background8.jpg");
                         background-size:cover;
+                }
+                h1{
+                        font-weight: lighter;
+                        margin: .67em 0;
+                        font-size: 36px; 
+
+                }
+		label{
+                        display: inline-block;
+                        width: 100px;
+                }
+                input {
+                        display: inline-block;
                 }
 
                 </style>
@@ -81,11 +95,6 @@ function sendMessage($username,$message){
                 $_SESSION["userName"] = "GUEST";
                 }
                 ?>
-                <link rel="stylesheet" type="text/css" href="cb_style.css">
-                <script type="text/javascript" src="chatjax.js"></script>
-
-                <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-      <link href="css/custom.css" rel="stylesheet">
         </head>
         <header>
                 <h1>Group 10's IM</h1>
@@ -111,12 +120,12 @@ function sendMessage($username,$message){
 				echo "<br>You must be logged in to use this functionality.";
 			}
 			else{ 
-				echo "Send a message ". $_SESSION["userName"] .".<br><br>";
+				echo "<br>Send a message ". $_SESSION["userName"] .".<br><br>";
 		?>
 		<form id="sendMessage" name="sendMessage" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-		RECIPIENT:  
+		<label>RECIPIENT:</label>  
 		<input type="text" name ="username" required>  <br>
-		MESSAGE:  
+		<label>MESSAGE:</label>  
 		<input type="message" name="message" required> <br> <br>
 		<input type="submit" value="SUBMIT" name="MessageButton" >
 		</form>

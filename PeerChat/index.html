@@ -19,7 +19,7 @@
     <title> Group 10's Instant Messenger </title>
 
     <!-- Bootstrap core CSS -->
-     <link href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/css/bootstrap.css" rel="stylesheet">
+	 <link href="http://uaf59248.ddns.uark.edu/PeerChat/bootstrap.css" rel= "stylesheet">
      <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
       <link href="css/custom.css" rel="stylesheet">
 
@@ -38,7 +38,13 @@
                         color: white;
                         text-align: center;
                 }
-                </style>
+				body {
+						
+						background-image: url("background8.jpg");
+						background-size:cover;
+
+				}
+   </style>
 
   </head>
 
@@ -65,18 +71,17 @@
           </header>
 	</form>
 		
-	<form class = "navbar-form navbar-left">
+	<form class = "navbar-form navbar-center">
              <div class="rmm">       
             <ul>
+			
                 <li><a href="http://uaf59248.ddns.uark.edu/Instant-Messenger/main.php">HOME</a></li>
                 <li><a href="http://uaf59248.ddns.uark.edu/Instant-Messenger/settings.php">SETTINGS</a></li>
-                <li><a href="http://uaf59248.ddns.uark.edu/Instant-Messenger/account.php">LOGIN</a></li>
-                <li><a href="http://uaf59248.ddns.uark.edu/Instant-Messenger/register.php">REGISTER</a></li>
-                <li><a href="http://uaf59248.ddns.uark.edu/Instant-Messenger/logout.php">LOGOUT</a></li>
                 <li><a href="http://uaf59248.ddns.uark.edu/Instant-Messenger/upload.php">UPLOAD FILE</a></li>
                 <li><a href="http://uaf59248.ddns.uark.edu/Instant-Messenger/messages.php"> VIEW MESSAGES</a></li>
                 <li><a href="http://uaf59248.ddns.uark.edu/Instant-Messenger/send_message.php">SEND MESSAGE</a></li>
                 <li><a href="http://uaf59248.ddns.uark.edu:3000">VIDEO CHAT</a></li>
+				<li><a href="http://uaf59248.ddns.uark.edu/Instant-Messenger/logout.php">LOGOUT</a></li>
             </ul>            
         </div>
         </form>	
@@ -91,7 +96,7 @@
              <input type="text" name="roomId" id="roomId" placeholder="Room" class="form-control">
             </div>
 
-           <input tupe="button" id="startButton" class="btn btn-success" value="Join"/>
+           <input type="button" id="startButton" class="btn btn-success" value="Join"/>
 
           </form>
         </div>
@@ -120,6 +125,7 @@
               <input type="text" id="msg" placeholder="Press enter to send message" class="fullsz form-control"/>          
             </div>
           </div>
+
         </div>
 
 </div>
