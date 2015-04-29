@@ -143,42 +143,42 @@ include 'connect.php';
 			$checkExists = $dir . $file_name;
 			$file_destination = $dir . $file_name;
 			if($file_name == NULL){
-				echo "Select a file";
+				echo "Select a file<br><br>";
 			}
 			else{
 				if($file_error === 0){
 					$checkUpload = 1;
 				}
 				else{
-					echo "<br>There was an error with the file.";
+					echo "<br>There was an error with the file.<br>";
 					$checkUpload = 0;
 				}
 				if(file_exists($checkExists)){
 					echo "<br>A file with the same name already exists.";
-					echo "<br>Change name of file if you still wish to upload.";
+					echo "<br>Change name of file if you still wish to upload.<br>";
 					$checkUpload = 0;
 				}
 		
 				if($file_size > 2097152) {
-					echo "<br>File size is too big.";
+					echo "<br>File size is too big.<br>";
 					$checkUpload = 0;
 				}
 	
 				if(!in_array($file_ext, $allowed)){	
-					echo "<br>File type not allowed.";
+					echo "<br>File type not allowed.<br>";
 					echo " ";
 					$checkUpload = 0;
 				}
 				if($checkUpload == 0){
-					echo "<br>File was not uploaded.";
+					echo "<br>File was not uploaded.<br>";
 				}
 				else{
 					if(move_uploaded_file($file_temp, $file_destination)){
 						echo "<br>The file " . $file_name . " has been uploaded.";
-						echo"<br><a href='upload.php'>Click to see updated list</a>";
+						echo"<br><a href='upload.php'>Click to see updated list</a><br><br>";
 					}
 					else{
-						echo "<br>File was not uploaded.";
+						echo "<br>File was not uploaded.<br>";
 					}
 				}
 			}
@@ -205,17 +205,17 @@ include 'connect.php';
 					$checkUpload = 1;
 				}
 				else{
-					echo "<br>There was an error with the file.";
+					echo "<br>There was an error with the file.<br>";
 					$checkUpload = 0;
 				}
 				if(file_exists($checkExists)){
 					echo "<br>A file with the same name already exists.";
-					echo "<br>Change name of file if you still wish to upload.";
+					echo "<br>Change name of file if you still wish to upload.<br>";
 					$checkUpload = 0;
 				}
 		
 				if($file_size > 2097152) {
-					echo "<br>File size is too big.";
+					echo "<br>File size is too big.<br>";
 					$checkUpload = 0;
 				}
 	
@@ -225,14 +225,15 @@ include 'connect.php';
 					$checkUpload = 0;
 				}
 				if($checkUpload == 0){
-					echo "<br>File was not uploaded.";
+					echo "<br>File was not uploaded.<br><br>";
 				}
 				else{
 					if(move_uploaded_file($file_temp, $file_destination)){
 						echo "<br>The file " . $file_name . " has been shared with " . $_POST['sName'];
+						echo "<br>";
 					}
 					else{
-						echo "<br>File was not shared.";
+						echo "<br>File was not shared.<br>";
 					}
 				}
 			}
@@ -242,3 +243,15 @@ include 'connect.php';
 	</div>
 	</body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+

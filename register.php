@@ -2,7 +2,6 @@
 // Start the session
 session_start();
 include 'connect.php';
-include 'check_signed_in.php';
 ?>
 <?php
 	function register($username,$password1,$password2){ 
@@ -41,33 +40,43 @@ include 'check_signed_in.php';
                 <meta charset="utf-8">
 
                 <title> Group 10's Instant Messenger </title>
-                <style>
+                 <style>
                 header { 
                         background:#1E1E1E;
                         color: white;
                         text-align: center;
                         padding: 5px;
-                }
-		 body{
-                        margin: 0px; 
+                }    
+                body{
+		<div align = center>  
+                        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+                        margin: 0px;                 
                         color: white;
                         background-image: url("background8.jpg");
                         background-size:cover;
                 }
+                h1{
+                        font-weight: lighter;
+                        margin: .67em 0;
+                        font-size: 36px;     
 
-                </style>
+                }
+                label{
+                        display: inline-block;
+                        width: 180px;
+                }
                 
+                input {
+                        display: inline-block;
+                }
+                </style>                 
                 <?php
                 if (!isset($_SESSION["userName"]))
                 {
                 $_SESSION["userName"] = "GUEST";
                 }
                 ?>
-                <link rel="stylesheet" type="text/css" href="cb_style.css">
-                <script type="text/javascript" src="chatjax.js"></script>
 
-                <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-      <link href="css/custom.css" rel="stylesheet">
         </head>
         <header>
                 <h1>Group 10's IM</h1>
@@ -84,16 +93,15 @@ include 'check_signed_in.php';
         
 
 	<body>
-		<div align = center>		
 		
 		<p> Please register here: </p>
 		<form name="register" id="register" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-		USERNAME: 
+		<label>USERNAME:</label> 
 		<input type="text" name="username" required> <br>
-		PASSWORD:
+		<label>PASSWORD:</label> 
 		<input type="password" name="pass1" id="pass1" required> <br>
-		CONFIRM PASSWORD:
-		<input type="password" name="pass2" id="pass2" required>
+		<label>CONFIRM PASSWORD:</label>
+		<input type="password" name="pass2" id="pass2" required> <br>
 		<input type="submit" value="SUBMIT" name="registerButton">
 		</form>
 		

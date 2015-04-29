@@ -37,7 +37,7 @@ function login($username,$password){
 	}
 
 	 $sql = "UPDATE users
-                SET is_signed_in = is_signed_in + 1
+                SET is_signed_in = is_signed_in+1
                 WHERE
                         user_name = '".$_SESSION["userName"]."'";
 
@@ -65,16 +65,16 @@ function login($username,$password){
                 <meta charset="utf-8">
 
                 <title> Group 10's Instant Messenger </title>
-		<style>
+ <style>
                 header { 
                         background:#1E1E1E;
                         color: white;
                         text-align: center;
                         padding: 5px;
-                }
+                }    
                 body{
                         font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-                        margin: 0px;
+                        margin: 0px;                 
                         color: white;
                         background-image: url("background8.jpg");
                         background-size:cover;
@@ -82,11 +82,19 @@ function login($username,$password){
                 h1{
                         font-weight: lighter;
                         margin: .67em 0;
-                        font-size: 36px; 
+                        font-size: 36px;     
 
                 }
-                </style>
+                label{
+                        display: inline-block;
+                        width: 100px;
+                }
                 
+                input {
+                        display: inline-block;
+                }
+	</style>
+
                 <?php
                 if (!isset($_SESSION["userName"]))
                 {
@@ -119,9 +127,9 @@ function login($username,$password){
 	?>
 		<p> Please use the following form to login: <br> </p>
 		<form id="login" name="login" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-		USERNAME:  
+		<label>USERNAME:</label>  
 		<input type="text" name ="username" required>  <br>
-		PASSWORD:     
+		<label>PASSWORD:</label>     
 		<input type="password" name="password" required> <br> <br>
 		<input type="submit" value="SUBMIT" name="loginButton" >
 		</form>

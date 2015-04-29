@@ -126,7 +126,7 @@ function sendMessage($username,$message){
 		<label>RECIPIENT:</label>  
 		<input type="text" name ="username" required>  <br>
 		<label>MESSAGE:</label>  
-		<input type="message" name="message" required> <br> <br>
+		<input type="text" name="message" required> <br> <br>
 		<input type="submit" value="SUBMIT" name="MessageButton" >
 		</form>
 		
