@@ -35,6 +35,13 @@ function viewMessages($username){
                         text-align: center;
                         padding: 5px;
                 }
+		 body{
+                        margin: 0px; 
+                        color: white;
+                        background-image: url("background8.jpg");
+                        background-size:cover;
+                }
+
                 </style>
                 
                 <?php
@@ -46,18 +53,27 @@ function viewMessages($username){
                 <link rel="stylesheet" type="text/css" href="cb_style.css">
                 <script type="text/javascript" src="chatjax.js"></script>
 
-                <link href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/css/bootstrap.css" rel="stylesheet">
                 <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
       <link href="css/custom.css" rel="stylesheet">
         </head>
         <header>
                 <h1>Group 10's IM</h1>
-                <?php include "menu.php";?>
+		<?php
+                if ( (!isset($_SESSION["userName"])) || ($_SESSION["userName"] == "GUEST") ){
+                        include "menu_guest.php";
+                }
+                else{
+                        include "menu.php";
+                }
+                ?>
+
 
         </header>
         
 		
 		<body>
+		<div align = center>
+
 		<?php
 			if ($_SESSION["userName"] == "GUEST")
 			{
@@ -74,6 +90,7 @@ function viewMessages($username){
 			}
 		?>
 		
+		</div>
 		</body>
 
 </html>

@@ -14,6 +14,18 @@ include 'connect.php';
                         text-align: center;
                         padding: 5px;
                 }
+		body{
+			margin:0px;
+			background-image: url("background8.jpg");
+			color:white;
+			background-size:cover;
+		}
+		a{
+			color: #CCFFCC;
+		}
+		a:visited {
+    			color: #00FF00;
+		}
                 </style>
 
                 <?php
@@ -23,8 +35,6 @@ include 'connect.php';
                 ?>
                 <link rel="stylesheet" type="text/css" href="cb_style.css">
                 <script type="text/javascript" src="chatjax.js"></script>
-
-                <link href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/css/bootstrap.css" rel="stylesheet">
                 <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
       <link href="css/custom.css" rel="stylesheet">
         </head>
@@ -47,7 +57,7 @@ include 'connect.php';
 		<h2>Upload File</h2>
 		<p><b>Allowed file formats: txt, pdf, doc, docx, ppt, pptx, jpg, png</b></p>
 		<form action="upload.php" method="POST" enctype="multipart/form-data">
-			<input align="center" type="file" name="file" id="file">
+			<input align="center" type="file" name="file" id="file"><br>
 			<input type="submit" value="upload" name="sumbit">
 		</form>
 	
@@ -77,8 +87,8 @@ include 'connect.php';
 	<h2>Share File</h2>
 		<p><b>Enter the username you would like to share a file with.</b></p>
 		<form action="upload.php" method="POST" enctype="multipart/form-data">
-			UserName: <input type="text" name="sName">
-			<input align="center" type="file" name="sFile" id="sFile">
+			UserName: <input type="text" name="sName"><br>
+			<input align="center" type="file" name="sFile" id="sFile"><br>
 			<input type="submit" value="share" name="sumbit">
 		</form>
 	<br>
@@ -104,7 +114,6 @@ include 'connect.php';
 					else{
 						$sDir = "/var/www/html/Instant-Messenger/uploads/" . $_POST["sName"] . "/";		
 					}
-                			
 				}
 
 			}
