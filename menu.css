@@ -1,13 +1,9 @@
 /*
-
 Responsive Mobile Menu v1.0
 Plugin URI: responsivemobilemenu.com
-
 Author: Sergio Vitov
 Author URI: http://xmacros.com
-
 License: CC BY 3.0 http://creativecommons.org/licenses/by/3.0/
-
 Adapted by: Omar Zambrano
 */
 
@@ -78,31 +74,13 @@ Adapted by: Omar Zambrano
 	font-size:15px;
 	text-shadow:1px 1px 1px #333333;
 	background-color:#444444;
-	border-left:1px solid #555555;
+	border:1px solid #555555;
 	background-image:url('../rmm-img/graphite-menu-bg.png');
 	background-repeat:repeat-x;
 }
 .rmm.graphite .rmm-main-list li a:hover {
 	background-image:url('../rmm-img/graphite-menu-bg-hover.png');
 }
-/*
-.rmm.graphite .rmm-main-list li:first-child a {
--webkit-border-top-left-radius: 6px;
--webkit-border-bottom-left-radius: 6px;
--moz-border-radius-topleft: 6px;
--moz-border-radius-bottomleft: 6px;
-border-top-left-radius: 6px;
-border-bottom-left-radius: 6px;
-}
-.rmm.graphite .rmm-main-list li:last-child a {
-	-webkit-border-top-right-radius: 6px;
--webkit-border-bottom-right-radius: 6px;
--moz-border-radius-topright: 6px;
--moz-border-radius-bottomright: 6px;
-border-top-right-radius: 6px;
-border-bottom-right-radius: 6px;
-}
-*/
 .rmm.graphite .rmm-toggled {
 	width:95%;
 	background-color:#555555;
@@ -156,4 +134,3 @@ border-bottom-right-radius: 6px;
 	border-bottom:1px solid #444444;
 	border-top:1px solid #444444;
 }
-
